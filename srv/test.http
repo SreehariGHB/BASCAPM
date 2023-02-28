@@ -1,0 +1,52 @@
+GET http://localhost:4004/CatalogService
+
+###
+Get http://localhost:4004/CatalogService/$metadata
+
+### Read top 2 employees
+Get http://localhost:4004/CatalogService/EmployeeSet?$top=2
+
+### Read Purchase orders
+Get http://localhost:4004/CatalogService/POs?$top=2
+
+### Create new employee
+Post http://localhost:4004/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+	"nameFirst": "Mahimar",
+	"nameMiddle": "Gowd",
+	"nameLast": "Satnoor",
+	"nameInitials": null,
+	"sex": "F",
+	"language": "E",
+	"phoneNumber": "+91 2243745246",
+	"email": "sally.spring@gmail.com",
+	"loginName": "MGOWDS",
+	"currency_code": "USD",
+	"salaryAmount": 55549,
+	"accountNumber": "111222333",
+	"bankId": "510000655",
+	"bankName": "My Bank of Antioch"
+}
+
+### Get new ly created Employee
+Get http://localhost:4004/CatalogService/EmployeeSet/6fd1faf9-fe14-4315-b17b-f5f461c62b5f
+
+### Update employee record - It clear all the other record values to null
+PUT http://localhost:4004/CatalogService/EmployeeSet/04274240-eec7-4dec-8ef2-6707e54871c7
+Content-Type: application/json
+
+{
+  "currency_code": "INR",
+  "salaryAmount": "876757"  
+}
+
+### Patch operation to update the records. 
+PATCH http://localhost:4004/CatalogService/EmployeeSet/23371160-2968-4278-a589-9e4bfcb0f6c3
+Content-Type: application/json
+
+{
+  "currency_code": "INR",
+  "salaryAmount": "10000000.99"  
+}
