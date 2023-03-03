@@ -8,14 +8,19 @@ entity EmployeeSet as projection on master.employees;
 entity AddressSet as projection on master.address;
 entity ProductSet as projection on master.product;
 // entity ProductTexts as projection on master.prodtext;
-@readonly
 entity BpSet as projection on master.businesspartner; 
 
-entity POs @(title: '{i18n>PoHeader}')as projection on transaction.purchaseorder{
-    *, Items: redirected to Poitems
-}
+entity POs @(title: 'Purchase Order') as projection on transaction.purchaseorder{
+    *,
+     round(GROSS_AMOUNT,2) as GROSS_AMOUNT: Decimal(15,2),
+     Items: redirected to Poitems
+}actions{
+  function largestOrder() returns array of POs;
+  action boost();
+};
 
-entity Poitems @(title:'{i18n>PoItems}') as projection on transaction.poitems{
+
+entity Poitems @(title:'PO Items') as projection on transaction.poitems{
     *, PARENT_KEY: redirected to POs,
        PRODUCT_GUID: redirected to ProductSet       
 }

@@ -4,10 +4,10 @@ GET http://localhost:4004/CatalogService
 Get http://localhost:4004/CatalogService/$metadata
 
 ### Read top 2 employees
-Get http://localhost:4004/CatalogService/EmployeeSet?$top=2
+Get http://localhost:4004/CatalogService/EmployeeSet?$top=5
 
 ### Read Purchase orders
-Get http://localhost:4004/CatalogService/POs?$top=2
+Get http://localhost:4004/CatalogService/POs?$top=5
 
 ### Create new employee
 Post http://localhost:4004/CatalogService/EmployeeSet
@@ -31,7 +31,7 @@ Content-Type: application/json
 }
 
 ### Get new ly created Employee
-Get http://localhost:4004/CatalogService/EmployeeSet/6fd1faf9-fe14-4315-b17b-f5f461c62b5f
+Get http://localhost:4004/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19867FB
 
 ### Update employee record - It clear all the other record values to null
 PUT http://localhost:4004/CatalogService/EmployeeSet/04274240-eec7-4dec-8ef2-6707e54871c7
@@ -43,10 +43,65 @@ Content-Type: application/json
 }
 
 ### Patch operation to update the records. 
-PATCH http://localhost:4004/CatalogService/EmployeeSet/23371160-2968-4278-a589-9e4bfcb0f6c3
+PATCH http://localhost:4004/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C1978698
 Content-Type: application/json
 
 {
   "currency_code": "INR",
-  "salaryAmount": "10000000.99"  
+  "salaryAmount": "10898.99"  
 }
+
+### Post with a new service
+POST http://localhost:4004/say/InsertEmployeeSrv
+Content-Type: application/json
+
+{
+	"ID": "02BD2137-0890-1EEA-A6C2-BB55C1978698",
+	"nameFirst": "Mahimarr",
+	"nameMiddle": "Gowd",
+	"nameLast": "Satnoor",
+	"nameInitials": null,
+	"sex": "F",
+	"language": "E",
+	"phoneNumber": "+91 2243745246",
+	"email": "sally.spring@gmail.com",
+	"loginName": "MGOWDS",
+	"currency_code": "USD",
+	"salaryAmount": 55549,
+	"accountNumber": "111222333",
+	"bankId": "510000655",
+	"bankName": "My Bank of Antioch"
+}
+
+### Read new custom handler service
+Get http://localhost:4004/say/ReadEmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C1978698
+
+### Updated service 
+PUT http://localhost:4004/say/UpdateEmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C19867FB
+Content-Type: application/json;IEEE754Compatible=true
+
+{
+  "ID": "02BD2137-0890-1EEA-A6C2-BB55C19867FB",	
+  "nameFirst": "rambhusl",
+  "nameLast": "Kashmipi"
+}
+
+### Delete Service with custom handler
+DELETE http://localhost:4004/say/DeleteEmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C1978698
+
+### Read Purchase orders
+Get http://localhost:4004/CatalogService/POs/02BD2137-0890-1EEA-A6C2-BB55C1979000
+
+### Calling custom action for the entity purchase order
+POST http://localhost:4004/CatalogService/POs('02BD2137-0890-1EEA-A6C2-BB55C1979002')/CatalogService.boost
+Content-Type: application/json
+
+{}
+
+### Calling custom action for the entity purchase order
+GET http://localhost:4004/CatalogService/POs('02BD2137-0890-1EEA-A6C2-BB55C1979002')/CatalogService.largestOrder()
+
+
+### Read Purchase orders
+Get http://localhost:4004/CatalogService/POs/02BD2137-0890-1EEA-A6C2-BB55C1979002
+
