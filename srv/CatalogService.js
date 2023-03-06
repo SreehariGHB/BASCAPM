@@ -24,7 +24,7 @@ module.exports = cds.service.impl(async function(){
       
        await cds.transaction(req).run([
         UPDATE(POs).set({
-            GROSS_AMOUNT: { '+=' : 20000 },
+            GROSS_AMOUNT: { '+=' : 200 },
             NOTE: "Boosted..!!"  
         }).where({ID: ID})
        ])

@@ -93,15 +93,36 @@ DELETE http://localhost:4004/say/DeleteEmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C
 Get http://localhost:4004/CatalogService/POs/02BD2137-0890-1EEA-A6C2-BB55C1979000
 
 ### Calling custom action for the entity purchase order
-POST http://localhost:4004/CatalogService/POs('02BD2137-0890-1EEA-A6C2-BB55C1979002')/CatalogService.boost
+POST http://localhost:4004/CatalogService/POs/02BD2137-0890-1EEA-A6C2-BB55C1979002/CatalogService.boost
 Content-Type: application/json
 
 {}
 
 ### Calling custom action for the entity purchase order
-GET http://localhost:4004/CatalogService/POs('02BD2137-0890-1EEA-A6C2-BB55C1979002')/CatalogService.largestOrder()
+GET http://localhost:4004/CatalogService/POs/02BD2137-0890-1EEA-A6C2-BB55C1979002/CatalogService.largestOrder()
 
 
 ### Read Purchase orders
 Get http://localhost:4004/CatalogService/POs/02BD2137-0890-1EEA-A6C2-BB55C1979002
 
+### Odata V2 Services
+Get http://localhost:4004/v2/CatalogService
+
+### V2 Read Meta Data
+Get http://localhost:4004/v2/CatalogService/$metadata
+
+### V2 Get Employee Set 
+Get http://localhost:4004/v2/CatalogService/EmployeeSet
+
+### V2 GET One purchase order
+Get http://localhost:4004/v2/CatalogService/POs/02BD2137-0890-1EEA-A6C2-BB55C1978999
+
+
+### Calling Action using V2
+POST http://localhost:4004/v2/CatalogService/POs_boost?ID=02BD2137-0890-1EEA-A6C2-BB55C1978999
+Content-Type: application/json
+
+{}
+
+### Calling Funtion using V2
+Get http://localhost:4004/v2/CatalogService/POs_largestOrder?ID=02BD2137-0890-1EEA-A6C2-BB55C1978999

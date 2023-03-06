@@ -88,22 +88,21 @@ context master
     }
 }
 
+    //  key ID : UUID @odata.Type:'Edm.String';
 context transaction
 {
-    entity purchaseorder : common.Amount
+            entity purchaseorder : common.Amount,cuid
     {
-        key ID : UUID @odata.Type:'Edm.String';
-        PO_ID : String(24);
+           PO_ID : String(24);
         PARTNER_GUID : Association to one master.businesspartner;
         LIFECYCLE_STATUS : String(1);
         OVERALL_STATUS : String(1);
         Items : Association to many poitems on Items.PARENT_KEY = $self;
         NOTE: String(256);
     }
-
-    entity poitems : common.Amount
+// key ID : UUID @odata.Type:'Edm.String';
+    entity poitems : common.Amount,cuid
     {
-        key ID : UUID @odata.Type:'Edm.String';
         PARENT_KEY : Association to one purchaseorder;
         PO_ITEM_POS : Integer;
         PRODUCT_GUID : Association to one master.product;
